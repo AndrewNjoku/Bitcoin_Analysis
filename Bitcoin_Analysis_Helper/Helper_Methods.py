@@ -1,36 +1,34 @@
-
 import time
-
 
 
 def clean_transactions(line):
     try:
         fields = line.split(',')
-        if len(fields)!=5 or fields[2]=='time':
+        if len(fields) != 5 or fields[2] == 'time':
             return False
-
 
         return True
 
     except:
         return False
+
 
 def remove_header(line):
     try:
 
-        if line[1][0][0]=='time':
+        if line[1][0][0] == 'time':
             return False
-
 
         return True
 
     except:
         return False
+
 
 def clean_vout(line):
     try:
         fields = line.split(',')
-        if len(fields)!=4:
+        if len(fields) != 4:
             return False
 
         return True
@@ -38,10 +36,11 @@ def clean_vout(line):
     except:
         return False
 
+
 def clean_vin(line):
     try:
         fields = line.split(',')
-        if len(fields)!=3:
+        if len(fields) != 3:
             return False
 
         return True
@@ -74,10 +73,9 @@ def filter_large(line):
         return False
 
 
-
 def group_transactions(time_epoch):
     if time_epoch != 'time':
-        year = time.strftime("%Y",time.gmtime(int(time_epoch)))
+        year = time.strftime("%Y", time.gmtime(int(time_epoch)))
         yearNum = int(year)
         if yearNum == 2009:
             return "2009"
@@ -91,5 +89,3 @@ def group_transactions(time_epoch):
             return "2013"
         if yearNum == 2014:
             return "2014"
-
-
